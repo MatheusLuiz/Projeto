@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const authRoute = require('./routes/authRoute'); // Importe sua rota de autenticação aqui
 const funcionarioRoutes = require('./routes/funcionarioRoute');
 const app = express();
@@ -7,6 +8,9 @@ const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 
 // Middleware para parser de requisições com JSON
 app.use(bodyParser.json());

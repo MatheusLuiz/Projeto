@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <title>Pesquisar Funcionários</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/dashboard.html">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="funcionariosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Funcionários
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="funcionariosDropdown">
+                    <li><a class="dropdown-item" href="/novofuncionario.html">Novo Funcionário</a></li>
+                    <li><a class="dropdown-item" href="/pesquisarFuncionario.html">Pesquisar Funcionário</a></li>
+                    <li><a class="dropdown-item" href="#">Cadastros Inativos</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="solicitacaoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Solicitação
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="solicitacaoDropdown">
+                    <li><a class="dropdown-item" href="#">Nova Solicitação</a></li>
+                    <li><a class="dropdown-item" href="#">Buscar Solicitação</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="atendimentoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Atendimento
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="atendimentoDropdown">
+                    <li><a class="dropdown-item" href="#">Novo Atendimento</a></li>
+                    <li><a class="dropdown-item" href="#">Buscar Atendimento</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="ajustesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Ajustes do Sistema
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="ajustesDropdown">
+                    <li><a class="dropdown-item" href="#">Paises</a></li>
+                    <li><a class="dropdown-item" href="#">Estados</a></li>
+                    <li><a class="dropdown-item" href="#">Cidades</a></li>
+                    <li><a class="dropdown-item" href="#">Setores</a></li>
+                    <li><a class="dropdown-item" href="#">Filiais</a></li>
+                    <li><a class="dropdown-item" href="#">Tipo Atendimento</a></li>
+                    <li><a class="dropdown-item" href="#">Tipo Solicitação</a></li>
+                    <li><a class="dropdown-item" href="#">Permissões</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="d-flex">
+                <a href="/logout.html" class="btn btn-outline-light">Sair</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form class="text-center" action="/:matricula" method="GET">
+                    <div class="col-md-12 mt-1">
+                        <label class="form-label" for="matricula">Número da Matrícula</label>
+                        <input class="form-control" name="matricula" type="number" required>
+                    </div>
+                    <div class="col-md-12 mt-4 text-end">
+                        <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <script src="js/Funcionarios.js"></script>
+</body>
+</html>
