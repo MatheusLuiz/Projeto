@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - MYC</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>My Collaborator</h2>
+    <form id="login-form" action="/login" method="POST">
+      <div class="mb-3">
+        <label for="username" class="form-label">Usuário</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Entrar</button>
+      <div id="error-message"></div>
+    </form>
+  </div>
+  <script src="/js/login.js"></script>
+</body>
+</html>
