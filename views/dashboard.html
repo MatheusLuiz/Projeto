@@ -1,75 +1,72 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/dashboard.css">
-    <link rel="shortcut icon" href="/icon/icon-Dashboard.png" type="image/x-icon">
-  </head>
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/dashboard.html">Home</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="funcionariosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Funcionários
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="funcionariosDropdown">
-                  <li><a class="dropdown-item" href="/novofuncionario.html">Novo Funcionário</a></li>
-                  <li><a class="dropdown-item" href="/pesquisarFuncionario.html">Pesquisar Funcionário</a></li>
-                  <li><a class="dropdown-item" href="#">Cadastros Inativos</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="solicitacaoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Solicitação
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="solicitacaoDropdown">
-                  <li><a class="dropdown-item" href="#">Nova Solicitação</a></li>
-                  <li><a class="dropdown-item" href="#">Buscar Solicitação</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="atendimentoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Atendimento
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="atendimentoDropdown">
-                  <li><a class="dropdown-item" href="#">Novo Atendimento</a></li>
-                  <li><a class="dropdown-item" href="#">Buscar Atendimento</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="ajustesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Ajustes do Sistema
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="ajustesDropdown">
-                  <li><a class="dropdown-item" href="#">Paises</a></li>
-                  <li><a class="dropdown-item" href="#">Estados</a></li>
-                  <li><a class="dropdown-item" href="#">Cidades</a></li>
-                  <li><a class="dropdown-item" href="#">Setores</a></li>
-                  <li><a class="dropdown-item" href="#">Filiais</a></li>
-                  <li><a class="dropdown-item" href="#">Tipo Atendimento</a></li>
-                  <li><a class="dropdown-item" href="#">Tipo Solicitação</a></li>
-                  <li><a class="dropdown-item" href="#">Permissões</a></li>
-                </ul>
-              </li>
-            </ul>
-            <div class="d-flex">
-              <a href="/logout.html" class="btn btn-outline-light">Sair</a>
-            </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard com Navbar - Exemplo Bootstrap</title>
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Funcionários <i class="fas fa-chevron-down"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <li><a class="dropdown-item" onclick="exibirListaFuncionarios()">Lista de Funcionários</a></li>
+                <li><a class="dropdown-item" href="#">Cadastrar Funcionário</a></li>
+                <li><a class="dropdown-item" href="#">Pesquisar Funcionário</a></li>
+                <li><a class="dropdown-item" href="#">Funcionários Inativos</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Opção 2 <i class="fas fa-chevron-down"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                <li><a class="dropdown-item" href="#">Subcategoria 2.1</a></li>
+                <li><a class="dropdown-item" href="#">Subcategoria 2.2</a></li>
+                <li><a class="dropdown-item" href="#">Subcategoria 2.3</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Opção 3 <i class="fas fa-chevron-down"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                <li><a class="dropdown-item" href="#">Subcategoria 3.1</a></li>
+                <li><a class="dropdown-item" href="#">Subcategoria 3.2</a></li>
+                <li><a class="dropdown-item" href="#">Subcategoria 3.3</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="d-flex">
+            <a href="/logout.html" class="btn btn-outline-light">Sair</a>
           </div>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
+  </header>
 
-    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <section id="sectionFuncionarios" class="container mt-4" style="display: none;">
+    <h2>Lista de Funcionários</h2>
+    <ul id="listaFuncionarios" class="list-group">
+      <!-- Lista de funcionários será inserida aqui -->
+    </ul>
+  </section>
+
+  <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/js/funcionario.js"></script>
+</body>
 </html>

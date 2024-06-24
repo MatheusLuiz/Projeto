@@ -4,11 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - MYC</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <!-- Favicon -->
   <link rel="shortcut icon" href="/icon/icon-Login.png" type="image/x-icon">
 </head>
 <body>
-  <div class="container">
+  <div class="container mt-5">
     <h2>My Collaborator</h2>
     <form id="login-form" action="/login" method="POST">
       <div class="mb-3">
@@ -20,9 +24,14 @@
         <input type="password" class="form-control" id="password" name="password" required>
       </div>
       <button type="submit" class="btn btn-primary">Entrar</button>
-      <div id="error-message"></div>
+      <div id="error-message" class="mt-3"></div>
     </form>
   </div>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JavaScript -->
   <script src="/js/login.js"></script>
 </body>
 </html>

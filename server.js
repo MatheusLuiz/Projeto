@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Configuração de rota para a autenticação
 app.use('/', authRoute);
 app.use('/api', funcionarioRoutes);
+app.use('/', funcionarioRoutes);
 
 
 // Servir arquivos estáticos (se necessário)

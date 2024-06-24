@@ -15,7 +15,9 @@ const getFuncionarioById = async (req, res) => {
 
 const getAllFuncionarios = async (req, res) => {
     try {
+        console.log("Chamando Funcionario.findAll");
         const funcionarios = await Funcionario.findAll();
+        console.log("Funcionários encontrados:", funcionarios);
         res.status(200).json(funcionarios);
     } catch (error) {
         console.error('Erro ao buscar todos os funcionários:', error.message);
@@ -25,29 +27,10 @@ const getAllFuncionarios = async (req, res) => {
 
 const createFuncionario = async (req, res) => {
     try {
-        // Verifica se todos os campos necessários estão presentes em req.body
-        const { matricula, nome } = req.body;
-
+        const { matricula, nome, sobrenome, cpf, rg, data_nascimento, estado_civil, cnh, status, data_cadastro, id_cargo, id_setor, id_filial } = req.body;
         if (!nome || !matricula) {
             return res.status(400).json({ error: 'Todos os campos obrigatórios devem ser preenchidos: nome, matricula' });
         }
-
-        // Extrai todos os campos do req.body, garantindo que apenas os campos necessários sejam passados
-        const {
-            sobrenome,
-            cpf,
-            rg,
-            data_nascimento,
-            estado_civil,
-            cnh,
-            status,
-            data_cadastro,
-            id_cargo,
-            id_setor,
-            id_filial // Qualquer outro campo não listado acima será capturado aqui
-        } = req.body;
-
-        // Cria um novo funcionário no banco de dados
         const newFuncionario = await Funcionario.create({
             matricula,
             nome,
@@ -61,10 +44,8 @@ const createFuncionario = async (req, res) => {
             data_cadastro,
             id_cargo,
             id_setor,
-            id_filial // Inclui outros dados capturados
+            id_filial
         });
-
-        // Retorna o novo funcionário criado
         res.status(201).json(newFuncionario);
     } catch (error) {
         console.error('Erro ao criar funcionário:', error.message);

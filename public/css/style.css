@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,71 +8,68 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
+  }
 
-.container {
+  .container {
     background-color: #13345398;
     border: 2px solid white;
     backdrop-filter: blur(10px);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 100px;
-    width: 250px;
-    max-width: 400px;
+    padding: 50px;
+    width: 100%;
+    max-width: 400px; /* Reduzido para 400px para um tamanho mais compacto */
     text-align: center;
-}
+  }
 
-h2 {
+  h2 {
     margin-bottom: 20px;
     font-size: 24px;
     color: white;
-}
+  }
 
+  #login-form {
+    margin-top: 20px;
+  }
 
-#login-form {
-    display: flex;
-    flex-direction: column;
-}
-
-
-input {
+  input[type="text"],
+  input[type="password"] {
     margin-bottom: 15px;
-    padding: 15px;
+    padding: 10px; /* Reduzido de 15px para 10px */
     border: 1px solid white;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px; /* Reduzido de 16px para 14px */
     background-color: white;
     color: black;
-}
+    width: 100%; /* Preenchimento total do espaço disponível */
+  }
 
-button {
-    padding: 15px;
+  button {
+    padding: 10px; /* Reduzido de 15px para 10px */
     margin-top: 10px;
     background-color: #193f63f6;
     border: 1px solid white;
     border-radius: 4px;
     color: white;
-    font-size: 16px;
+    font-size: 14px; /* Reduzido de 16px para 14px */
     cursor: pointer;
-}
+    width: 100%; /* Preenchimento total do espaço disponível */
+  }
 
-
-button:hover {
+  button:hover {
     background-color: #0d233800;
     border: 2px solid white;
-}
+  }
 
-label {
+  label {
     text-align: left;
     margin-bottom: 5px;
     font-weight: bold;
-    color: White;
-    
-}
+    color: white;
+  }
 
-
-#error-message {
-    color:red;
+  #error-message {
+    color: red;
     margin-top: 15px;
     font-weight: bold;
-}
+  }
