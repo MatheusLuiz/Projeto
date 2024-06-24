@@ -13,10 +13,10 @@ const getFuncionarioById = async (req, res) => {
     }
 };
 
-const getAllFuncionarios = async (req, res) => {
+const getAllFuncionariosActive = async (req, res) => {
     try {
         console.log("Chamando Funcionario.findAll");
-        const funcionarios = await Funcionario.findAll();
+        const funcionarios = await Funcionario.findAllActive();
         console.log("Funcionários encontrados:", funcionarios);
         res.status(200).json(funcionarios);
     } catch (error) {
@@ -56,5 +56,5 @@ const createFuncionario = async (req, res) => {
 module.exports = {
     createFuncionario,
     getFuncionarioById,
-    getAllFuncionarios
+    getAllFuncionariosActive
 };

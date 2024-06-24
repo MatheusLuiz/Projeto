@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="/css/dashboard.css">
 </head>
 <body>
-
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
@@ -23,30 +22,41 @@
                 Funcionários <i class="fas fa-chevron-down"></i>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <li><a class="dropdown-item" onclick="exibirListaFuncionarios()">Lista de Funcionários</a></li>
-                <li><a class="dropdown-item" href="#">Cadastrar Funcionário</a></li>
-                <li><a class="dropdown-item" href="#">Pesquisar Funcionário</a></li>
-                <li><a class="dropdown-item" href="#">Funcionários Inativos</a></li>
+                <li><a class="dropdown-item" onclick="exibirListaFuncionariosAtivos()">Lista de Funcionários</a></li>
+                <li><a class="dropdown-item" onclick="exibirFormCadastro()">Cadastrar Funcionário</a></li>
+                <li><a class="dropdown-item" onclick="pesquisarFuncionarios()">Pesquisar Funcionário</a></li>
+                <li><a class="dropdown-item" onclick="exibirListaFuncionariosInativos()">Funcionários Inativos</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Opção 2 <i class="fas fa-chevron-down"></i>
+                Atendimentos <i class="fas fa-chevron-down"></i>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                <li><a class="dropdown-item" href="#">Subcategoria 2.1</a></li>
-                <li><a class="dropdown-item" href="#">Subcategoria 2.2</a></li>
-                <li><a class="dropdown-item" href="#">Subcategoria 2.3</a></li>
+                <li><a class="dropdown-item" href="#">Novo Atendimento</a></li>
+                <li><a class="dropdown-item" href="#">Pesquisar Atendimentos</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Opção 3 <i class="fas fa-chevron-down"></i>
+                Solicitações <i class="fas fa-chevron-down"></i>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                <li><a class="dropdown-item" href="#">Subcategoria 3.1</a></li>
-                <li><a class="dropdown-item" href="#">Subcategoria 3.2</a></li>
-                <li><a class="dropdown-item" href="#">Subcategoria 3.3</a></li>
+                <li ><a class="dropdown-item" href="#">Novo Atendimento</a></li>
+                <li ><a class="dropdown-item" href="#">Pesquisar Atendimentos</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Configurações do Sitema <i class="fas fa-chevron-down"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                <li ><a class="dropdown-item" href="#">Paises</a></li>
+                <li ><a class="dropdown-item" href="#">Estados</a></li>
+                <li ><a class="dropdown-item" href="#">Setores</a></li>
+                <li ><a class="dropdown-item" href="#">Filiais</a></li>
+                <li ><a class="dropdown-item" href="#">Tipo Atendimento</a></li>
+                <li ><a class="dropdown-item" href="#">Tipo Solicitação</a></li>
               </ul>
             </li>
           </ul>
@@ -65,8 +75,80 @@
     </ul>
   </section>
 
+  <section id="sectionCadastro" class="container mt-4" style="display: none;">
+    <h2>Cadastrar Funcionário</h2>
+    <form id="formCadastroFuncionario">
+      <div class="mb-3">
+        <label for="matricula" class="form-label">Matrícula</label>
+        <input type="text" class="form-control" id="matricula" required>
+      </div>
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="nome" required>
+      </div>
+      <div class="mb-3">
+        <label for="sobrenome" class="form-label">Sobrenome</label>
+        <input type="text" class="form-control" id="sobrenome">
+      </div>
+      <div class="mb-3">
+        <label for="cpf" class="form-label">CPF</label>
+        <input type="text" class="form-control" id="cpf">
+      </div>
+      <div class="mb-3">
+        <label for="rg" class="form-label">RG</label>
+        <input type="text" class="form-control" id="rg">
+      </div>
+      <div class="mb-3">
+        <label for="data_nascimento" class="form-label">Data de Nascimento</label>
+        <input type="date" class="form-control" id="data_nascimento">
+      </div>
+      <div class="mb-3">
+        <label for="estado_civil" class="form-label">Estado Civil</label>
+        <input type="text" class="form-control" id="estado_civil">
+      </div>
+      <div class="mb-3">
+        <label for="cnh" class="form-label">CNH</label>
+        <input type="text" class="form-control" id="cnh">
+      </div>
+      <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <input type="text" class="form-control" id="status">
+      </div>
+      <div class="mb-3">
+        <label for="data_cadastro" class="form-label">Data de Cadastro</label>
+        <input type="date" class="form-control" id="data_cadastro">
+      </div>
+      <div class="mb-3">
+        <label for="id_cargo" class="form-label">ID do Cargo</label>
+        <input type="text" class="form-control" id="id_cargo">
+      </div>
+      <div class="mb-3">
+        <label for="id_setor" class="form-label">ID do Setor</label>
+        <input type="text" class="form-control" id="id_setor">
+      </div>
+      <div class="mb-3">
+        <label for="id_filial" class="form-label">ID da Filial</label>
+        <input type="text" class="form-control" id="id_filial">
+      </div> 
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+  </section>
+  <div id="mensagemCadastro"></div>
+
   <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="/js/funcionario.js"></script>
+  <script>
+    // Captura o formulário de cadastro
+    const formCadastroFuncionario = document.getElementById('formCadastroFuncionario');
+  
+    // Adiciona um event listener para o evento de submit
+    formCadastroFuncionario.addEventListener('submit', async function(event) {
+      event.preventDefault(); // Previne o comportamento padrão do formulário
+  
+      // Chama a função para cadastrar o funcionário
+      await CadastrarFuncionario();
+    });
+  </script>
 </body>
 </html>

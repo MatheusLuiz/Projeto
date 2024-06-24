@@ -5,7 +5,7 @@ const funcionarioController = require('../controllers/funcionarioController');
 router.get('/funcionarios', (req, res, next) => {
     console.log("Requisição recebida em /funcionarios");
     next();
-}, funcionarioController.getAllFuncionarios);
+}, funcionarioController.getAllFuncionariosActive);
 
 router.get('/funcionarios/:matricula', (req, res, next) => {
     console.log(`Requisição recebida em /funcionarios/${req.params.matricula}`);
