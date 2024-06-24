@@ -32,3 +32,4 @@ const handleSubmit = async (event) => {
 };
 
 document.querySelector('form').addEventListener('submit', handleSubmit);
+

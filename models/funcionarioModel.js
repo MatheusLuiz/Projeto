@@ -3,14 +3,14 @@ const db = require('../config/banco.js');
 const Funcionario = {
     create: async (funcionario) => {
         try {
-            const { matricula, nome, sobrenome, cpf, rg, data_nascimento, estado_civil, cnh, status, data_cadastro, id_cargo, id_setor, id_filial } = funcionario;
+            const {matricula, nome, sobrenome, cpf, rg, data_nascimento, estado_civil, cnh, status, data_cadastro, id_cargo, id_setor, id_filial } = funcionario;
 
             const [rows] = await db.execute(
                 `INSERT INTO funcionarios (matricula, nome, sobrenome, CPF, RG, data_nascimento, estado_civil, cnh, status, data_cadastro, id_cargo, id_setor, id_filial)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                 [matricula, nome, sobrenome, cpf, rg, data_nascimento, estado_civil, cnh, status, data_cadastro, id_cargo, id_setor, id_filial]
             );
-
+            
             return rows;
         } catch (error) {
             console.error('Erro ao criar funcionário no banco de dados:', error);
