@@ -27,7 +27,7 @@ function exibirListaFuncionariosAtivos() {
         li.innerHTML = `
           <span>${funcionario.nome} ${funcionario.sobrenome} - Matrícula: ${funcionario.matricula}</span>
           <div>
-            <button class="btn btn-primary btn-sm me-2" onclick="editarFuncionario(${funcionario.matricula})">Editar</button>
+            <button class="btn btn-primary btn-sm me-2" onclick="openModal()">Editar</button>
             <button class="btn btn-danger btn-sm" onclick="deletarFuncionario(${funcionario.matricula})">Deletar</button>
           </div>
         `;
@@ -288,10 +288,7 @@ async function pesquisarFuncionario() {
   }
 }
 
-// Função para editar um funcionário
-function editarFuncionario(id) {
-  
-}
+
 
 // Função para deletar um funcionário
 function deletarFuncionario(matricula) {
@@ -325,12 +322,85 @@ function limparMensagem() {
   }
 }
 
+// Função para editar um funcionário
+async function editarFuncionario() {
+  try {
+    const matricula = document.getElementById("matricula").value;
+    const nome = document.getElementById("nome").value;
+    const sobrenome = document.getElementById("sobrenome").value;
+    const cpf = document.getElementById("cpf").value;
+    const rg = document.getElementById("rg").value;
+    const data_nascimento = document.getElementById("data_nascimento").value;
+    const estado_civil = document.getElementById("estado_civil").value;
+    const cnh = document.getElementById("cnh").value;
+    const status = document.getElementById("status").value;
+    const data_cadastro = document.getElementById("data_cadastro").value;
+    const id_cargo = document.getElementById("id_cargo").value;
+    const id_setor = document.getElementById("id_setor").value;
+    const id_filial = document.getElementById("id_filial").value;
+
+    // Verificar se campos obrigatórios estão preenchidos
+    if (!nome || !matricula) {
+      exibirMensagemErro(
+        "Todos os campos obrigatórios devem ser preenchidos: nome, matricula"
+      );
+      return;
+    }
+
+    // Objeto com os dados do funcionário
+    const funcionarioData = {
+      matricula,
+      nome,
+      sobrenome,
+      cpf,
+      rg,
+      data_nascimento,
+      estado_civil,
+      cnh,
+      status,
+      data_cadastro,
+      id_cargo,
+      id_setor,
+      id_filial,
+    };
+
+    // Enviar requisição POST para cadastrar o funcionário
+    const response = await fetch("/funcionarios", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(funcionarioData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Erro ao cadastrar funcionário");
+    }
+
+    // Limpar formulário após sucesso
+    limparFormulario();
+
+    // Exibir mensagem de sucesso
+    exibirMensagemSucesso("Funcionário cadastrado com sucesso");
+  } catch (error) {
+    console.error("Erro ao cadastrar funcionário:", error.message);
+    exibirMensagemErro("Erro ao cadastrar funcionário");
+  }
+}
+
 // Adiciona um event listener para o evento de submit
 formCadastroFuncionario.addEventListener("submit", async function (event) {
   event.preventDefault(); // Previne o comportamento padrão do formulário
 
   // Chama a função para cadastrar o funcionário
   await CadastrarFuncionario();
+});
+
+formEditarFuncionario.addEventListener("submit", async function (event) {
+  event.preventDefault(); // Previne o comportamento padrão do formulário
+
+  // Chama a função para cadastrar o funcionário
+  await editarFuncionario();
 });
 
 
@@ -394,6 +464,8 @@ document
   .addEventListener("submit", pesquisarFuncionario);
 
 function openModal(){
+    document.getElementById('sectionFuncionarios').style.display = 'none';
+    document.getElementById('sectionModal').style.display = 'block';
     const modal = document.getElementById('modal-container')
     modal.classList.add('mostrar')
 

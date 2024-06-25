@@ -6,6 +6,7 @@
   <title>Dashboard com Navbar - Exemplo Bootstrap</title>
   <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/modal.css">
 </head>
 <body>
   <header>
@@ -154,6 +155,71 @@
       <!-- Lista de funcionários será inserida aqui -->
     </ul>
   </section>
+
+  <section id="sectionModal" class="container mt-4" style="display: none;">
+    <div id="modal-container" class="modal-container">
+        <div class="modal-content">
+            <button class="fechar" id="fechar">X</button>
+            <h2>Editar Funcionario</h2>
+            <form id="formEditarFuncionario">
+              <div class="mb-3">
+                <label for="matricula" class="form-label">Matrícula</label>
+                <input type="text" class="form-control" id="matricula" required>
+              </div>
+              <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" required>
+              </div>
+              <div class="mb-3">
+                <label for="sobrenome" class="form-label">Sobrenome</label>
+                <input type="text" class="form-control" id="sobrenome">
+              </div>
+              <div class="mb-3">
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="cpf">
+              </div>
+              <div class="mb-3">
+                <label for="rg" class="form-label">RG</label>
+                <input type="text" class="form-control" id="rg">
+              </div>
+              <div class="mb-3">
+                <label for="data_nascimento" class="form-label">Data de Nascimento</label>
+                <input type="date" class="form-control" id="data_nascimento">
+              </div>
+              <div class="mb-3">
+                <label for="estado_civil" class="form-label">Estado Civil</label>
+                <input type="text" class="form-control" id="estado_civil">
+              </div>
+              <div class="mb-3">
+                <label for="cnh" class="form-label">CNH</label>
+                <input type="text" class="form-control" id="cnh">
+              </div>
+              <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <input type="text" class="form-control" id="status">
+              </div>
+              <div class="mb-3">
+                <label for="data_cadastro" class="form-label">Data de Cadastro</label>
+                <input type="date" class="form-control" id="data_cadastro">
+              </div>
+              <div class="mb-3">
+                <label for="id_cargo" class="form-label">ID do Cargo</label>
+                <input type="text" class="form-control" id="id_cargo">
+              </div>
+              <div class="mb-3">
+                <label for="id_setor" class="form-label">ID do Setor</label>
+                <input type="text" class="form-control" id="id_setor">
+              </div>
+              <div class="mb-3">
+                <label for="id_filial" class="form-label">ID da Filial</label>
+                <input type="text" class="form-control" id="id_filial">
+              </div> 
+              <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+  </section>
+  
 
   <div id="mensagemCadastro"></div>
 

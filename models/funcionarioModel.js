@@ -40,8 +40,8 @@ const Funcionario = {
             throw error;
         }
     },
-    update: async (matricula, funcionario) => {
-        const { nome, sobrenome, cpf, rg, data_nascimento, estado_civil, cnh, status, data_cadastro, id_cargo, id_setor, id_filial } = funcionario;
+    update: async (funcionario) => {
+        const {nome, sobrenome, cpf, rg, data_nascimento, estado_civil, cnh, status, data_cadastro, id_cargo, id_setor, id_filial, matricula } = funcionario;
         const [rows] = await db.execute(
             `UPDATE funcionarios SET nome = ?, sobrenome = ?, CPF = ?, RG = ?, data_nascimento = ?, estado_civil = ?, cnh = ?, status = ?, data_cadastro = ?, id_cargo = ?, id_setor = ?, id_filial = ? WHERE matricula = ?`,
             [nome, sobrenome || null, cpf || null, rg || null, data_nascimento || null, estado_civil || null, cnh || null, status || null, data_cadastro || null, id_cargo || null, id_setor || null, id_filial || null, matricula]
