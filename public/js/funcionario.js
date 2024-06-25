@@ -27,7 +27,7 @@ function exibirListaFuncionariosAtivos() {
           <span>${funcionario.nome} ${funcionario.sobrenome} - Matrícula: ${funcionario.matricula}</span>
           <div>
             <button class="btn btn-primary btn-sm me-2" onclick="editarFuncionario(${funcionario.id})">Editar</button>
-            <button class="btn btn-danger btn-sm" onclick="deletarFuncionario(${funcionario.id})">Deletar</button>
+            <button class="btn btn-danger btn-sm" onclick="deletarFuncionario(${funcionario.matricula})">Deletar</button>
           </div>
         `;
         lista.appendChild(li);
@@ -50,12 +50,12 @@ function editarFuncionario(id) {
   // e exibir o formulário para edição
 }
 
-function deletarFuncionario(id) {
+function deletarFuncionario(matricula) {
   // Lógica para deletar o funcionário
-  console.log(`Deletar funcionário com ID: ${id}`);
+  console.log(`Deletar funcionário com ID: ${matricula}`);
 
   // Enviar requisição DELETE para o servidor
-  fetch(`/funcionarios/${id}`, {
+  fetch(`/funcionarios/${matricula}`, {
     method: 'DELETE'
   })
   .then(response => {
@@ -229,7 +229,7 @@ async function pesquisarFuncionario() {
           <p class="card-text">Estado Civil: ${funcionario.estado_civil}</p>
           <p class="card-text">Status: ${funcionario.status}</p>
           <button class="btn btn-primary" onclick="editarFuncionario(${funcionario.id})">Editar</button>
-          <button class="btn btn-danger" onclick="deletarFuncionario(${funcionario.id})">Deletar</button>
+          <button class="btn btn-danger" onclick="deletarFuncionario(${funcionario.matricula})">Deletar</button>
         </div>
       </div>
     `;
@@ -256,22 +256,26 @@ function editarFuncionario(id) {
 }
 
 // Função para deletar um funcionário
-function deletarFuncionario(id) {
-  console.log(`Deletar funcionário com ID: ${id}`);
+function deletarFuncionario(matricula) {
+  console.log(`Deletar funcionário com Matrícula: ${matricula}`);
 
-  fetch(`/funcionarios/${id}`, {
+  fetch(`/funcionarios/${matricula}`, {
     method: 'DELETE'
   })
   .then(response => {
     if (!response.ok) {
       throw new Error('Erro ao deletar funcionário');
     }
-    // Após deletar com sucesso, pode ser interessante exibir uma mensagem ou atualizar a lista de funcionários
-    // exibirListaFuncionariosAtivos();
+    // Atualizar a lista de funcionários após a exclusão
+    exibirListaFuncionariosAtivos();
   })
   .catch(error => {
     console.error('Erro ao deletar funcionário:', error);
-    // Aqui você pode exibir uma mensagem de erro ou tratar de outra forma
+    const errorDiv = document.getElementById('sectionFuncionarios');
+    errorDiv.innerHTML = `
+      <div class="alert alert-danger" role="alert">
+        Erro ao deletar funcionário. Verifique o console para mais detalhes.
+      </div>`;
   });
 }
 
