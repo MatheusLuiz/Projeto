@@ -7,6 +7,7 @@ function exibirListaFuncionariosAtivos() {
   // Exibir a seção de funcionários e ocultar formulário de cadastro
   document.getElementById('sectionFuncionarios').style.display = 'block';
   document.getElementById('sectionCadastro').style.display = 'none';
+  document.getElementById('sectionModal').style.display = 'none';
 
   // Fetch para buscar e exibir lista de funcionários
   fetch('/funcionarios')
@@ -26,7 +27,7 @@ function exibirListaFuncionariosAtivos() {
         li.innerHTML = `
           <span>${funcionario.nome} ${funcionario.sobrenome} - Matrícula: ${funcionario.matricula}</span>
           <div>
-            <button class="btn btn-primary btn-sm me-2" onclick="editarFuncionario(${funcionario.id})">Editar</button>
+            <button class="btn btn-primary btn-sm me-2" onclick="openModal()">Editar</button>
             <button class="btn btn-danger btn-sm" onclick="deletarFuncionario(${funcionario.matricula})">Deletar</button>
           </div>
         `;
@@ -41,6 +42,19 @@ function exibirListaFuncionariosAtivos() {
           Erro ao buscar funcionários. Verifique o console para mais detalhes.
         </div>`;
     });
+}
+
+function openModal(){
+  document.getElementById('sectionFuncionarios').style.display = 'none';
+  document.getElementById('sectionModal').style.display = 'block';
+  const modal = document.getElementById('modal-container')
+  modal.classList.add('mostrar')
+    modal.addEventListener('click', (e) =>{
+      if (e.target.id == 'modal-container' || e.target.id == "fechar"){
+          modal.classList.remove('mostrar')
+          localStorage.fechaModal = 'modal-container'
+      }
+    })
 }
 
 function editarFuncionario(id) {
@@ -248,8 +262,8 @@ async function pesquisarFuncionario() {
 }
 
 // Função para editar um funcionário
-function editarFuncionario(id) {
-  console.log(`Editar funcionário com ID: ${id}`);
+function editarFuncionario(matricula) {
+  console.log(`Editar funcionário com ID: ${matricula}`);
   // Aqui você pode implementar a lógica para editar o funcionário
   // Por exemplo, preencher o formulário de cadastro com os dados do funcionário
   // e exibir o formulário para edição
