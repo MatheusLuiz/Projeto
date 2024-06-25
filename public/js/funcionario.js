@@ -27,7 +27,7 @@ function exibirListaFuncionariosAtivos() {
         li.innerHTML = `
           <span>${funcionario.nome} ${funcionario.sobrenome} - Matrícula: ${funcionario.matricula}</span>
           <div>
-            <button class="btn btn-primary btn-sm me-2" onclick="openModal()">Editar</button>
+            <button class="btn btn-primary btn-sm me-2" onclick="openModal(${funcionario.matricula})">Editar</button>
             <button class="btn btn-danger btn-sm" onclick="deletarFuncionario(${funcionario.matricula})">Deletar</button>
           </div>
         `;
@@ -375,7 +375,7 @@ async function editarFuncionario() {
     });
 
     if (!response.ok) {
-      throw new Error("Erro ao cadastrar funcionário");
+      throw new Error("Erro ao cadastrar funcionário 32");
     }
 
     // Limpar formulário após sucesso
@@ -464,12 +464,39 @@ document
   .getElementById("formPesquisaFuncionario")
   .addEventListener("submit", pesquisarFuncionario);
 
-function openModal(){
+function openModal(matricula){
     document.getElementById('sectionFuncionarios').style.display = 'none';
     document.getElementById("sectionPesquisa").style.display = "none";
     document.getElementById('sectionModal').style.display = 'block';
     const modal = document.getElementById('modal-container')
     modal.classList.add('mostrar')
+
+    fetch(`/funcionarios/${matricula}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro ao buscar dados do funcionário');
+      }
+      return response.json();
+    })
+    .then(funcionario => {
+      // Preencher os campos do formulário com os dados do funcionário
+      document.getElementById('matricula2').value = funcionario.matricula;
+      document.getElementById('nome2').value = funcionario.nome;
+      document.getElementById('sobrenome2').value = funcionario.sobrenome;
+      document.getElementById('cpf2').value = funcionario.CPF;
+      document.getElementById('rg2').value = funcionario.RG;
+      document.getElementById('data_nascimento2').value = funcionario.data_nascimento;
+      document.getElementById('estado_civil2').value = funcionario.estado_civil;
+      document.getElementById('cnh2').value = funcionario.cnh;
+      document.getElementById('status2').value = funcionario.status;
+      document.getElementById('data_cadastro2').value = funcionario.data_cadastro;
+      document.getElementById('id_cargo2').value = funcionario.id_cargo;
+      document.getElementById('id_setor2').value = funcionario.id_setor;
+      document.getElementById('id_filial2').value = funcionario.id_filial;
+    })
+    .catch(error => {
+      console.error('Erro ao buscar dados do funcionário:', error);
+    });
 
     modal.addEventListener('click', (e) =>{
         if (e.target.id == 'modal-container' || e.target.id == "fechar"){
