@@ -17,4 +17,14 @@ router.post('/funcionarios', (req, res, next) => {
     next();
 }, funcionarioController.createFuncionario);
 
+router.put('/funcionarios/:id', (req, res, next) => {
+    console.log(`Requisição recebida em /funcionarios/${req.params.id} com corpo:`, req.body);
+    next();
+}, funcionarioController.updateFuncionario);
+
+router.delete('/funcionarios/:id', (req, res, next) => {
+    console.log(`Requisição recebida em /funcionarios/${req.params.id}`);
+    next();
+}, funcionarioController.deleteFuncionario);
+
 module.exports = router;

@@ -53,8 +53,45 @@ const createFuncionario = async (req, res) => {
     }
 };
 
+const updateFuncionario = async (req, res) => {
+    const { id } = req.params;
+    const updateData = req.body;
+
+    try {
+        const updatedFuncionario = await Funcionario.findByIdAndUpdate(id, updateData, { new: true });
+
+        if (!updatedFuncionario) {
+            return res.status(404).json({ error: 'Funcionário não encontrado' });
+        }
+
+        res.status(200).json(updatedFuncionario);
+    } catch (error) {
+        console.error('Erro ao atualizar funcionário:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+};
+
+const deleteFuncionario = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const deletedFuncionario = await Funcionario.delete(id);
+
+        if (!deletedFuncionario) {
+            return res.status(404).json({ error: 'Funcionário não encontrado' });
+        }
+
+        res.status(200).json({ message: 'Funcionário excluído com sucesso' });
+    } catch (error) {
+        console.error('Erro ao deletar funcionário:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+};
+
 module.exports = {
     createFuncionario,
     getFuncionarioById,
-    getAllFuncionariosActive
+    getAllFuncionariosActive,
+    updateFuncionario,
+    deleteFuncionario
 };

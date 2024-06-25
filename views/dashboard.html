@@ -138,17 +138,5 @@
   <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="/js/funcionario.js"></script>
-  <script>
-    // Captura o formulário de cadastro
-    const formCadastroFuncionario = document.getElementById('formCadastroFuncionario');
-  
-    // Adiciona um event listener para o evento de submit
-    formCadastroFuncionario.addEventListener('submit', async function(event) {
-      event.preventDefault(); // Previne o comportamento padrão do formulário
-  
-      // Chama a função para cadastrar o funcionário
-      await CadastrarFuncionario();
-    });
-  </script>
 </body>
 </html>
