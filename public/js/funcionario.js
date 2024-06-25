@@ -77,7 +77,7 @@ function exibirListaFuncionariosInativos() {
         li.innerHTML = `
           <span>${funcionario.nome} ${funcionario.sobrenome} - Matrícula: ${funcionario.matricula}</span>
           <div>
-            <button class="btn btn-primary btn-sm me-2" onclick="editarFuncionario(${funcionario.id})">Editar</button>
+            <button class="btn btn-primary btn-sm me-2" onclick="openModal()">Editar</button>
             <button class="btn btn-danger btn-sm" onclick="deletarFuncionario(${funcionario.matricula})">Deletar</button>
           </div>
         `;
@@ -270,7 +270,7 @@ async function pesquisarFuncionario() {
           <p class="card-text">Data de Nascimento: ${funcionario.data_nascimento}</p>
           <p class="card-text">Estado Civil: ${funcionario.estado_civil}</p>
           <p class="card-text">Status: ${funcionario.status}</p>
-          <button class="btn btn-primary" onclick="editarFuncionario(${funcionario.id})">Editar</button>
+          <button class="btn btn-primary" onclick="openModal()">Editar</button>
           <button class="btn btn-danger" onclick="deletarFuncionario(${funcionario.matricula})">Deletar</button>
         </div>
       </div>
@@ -325,23 +325,24 @@ function limparMensagem() {
 // Função para editar um funcionário
 async function editarFuncionario() {
   try {
-    const matricula = document.getElementById("matricula").value;
-    const nome = document.getElementById("nome").value;
-    const sobrenome = document.getElementById("sobrenome").value;
-    const cpf = document.getElementById("cpf").value;
-    const rg = document.getElementById("rg").value;
-    const data_nascimento = document.getElementById("data_nascimento").value;
-    const estado_civil = document.getElementById("estado_civil").value;
-    const cnh = document.getElementById("cnh").value;
-    const status = document.getElementById("status").value;
-    const data_cadastro = document.getElementById("data_cadastro").value;
-    const id_cargo = document.getElementById("id_cargo").value;
-    const id_setor = document.getElementById("id_setor").value;
-    const id_filial = document.getElementById("id_filial").value;
+    const matricula = document.getElementById("matricula2").value;
+    const nome = document.getElementById("nome2").value;
+    const sobrenome = document.getElementById("sobrenome2").value;
+    const cpf = document.getElementById("cpf2").value;
+    const rg = document.getElementById("rg2").value;
+    const data_nascimento = document.getElementById("data_nascimento2").value;
+    const estado_civil = document.getElementById("estado_civil2").value;
+    const cnh = document.getElementById("cnh2").value;
+    const status = document.getElementById("status2").value;
+    const data_cadastro = document.getElementById("data_cadastro2").value;
+    const id_cargo = document.getElementById("id_cargo2").value;
+    const id_setor = document.getElementById("id_setor2").value;
+    const id_filial = document.getElementById("id_filial2").value;
 
     // Verificar se campos obrigatórios estão preenchidos
     if (!nome || !matricula) {
       exibirMensagemErro(
+        "teste3",
         "Todos os campos obrigatórios devem ser preenchidos: nome, matricula"
       );
       return;
@@ -365,8 +366,8 @@ async function editarFuncionario() {
     };
 
     // Enviar requisição POST para cadastrar o funcionário
-    const response = await fetch("/funcionarios", {
-      method: "PUT",
+    const response = await fetch("/funcionario", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -436,11 +437,11 @@ async function pesquisarFuncionario(event) {
         <div class="card-body">
           <h5 class="card-title">${funcionario.nome} ${funcionario.sobrenome}</h5>
           <p class="card-text">Matrícula: ${funcionario.matricula}</p>
-          <p class="card-text">CPF: ${funcionario.cpf}</p>
+          <p class="card-text">CPF: ${funcionario.CPF}</p>
           <p class="card-text">Data de Nascimento: ${funcionario.data_nascimento}</p>
           <p class="card-text">Estado Civil: ${funcionario.estado_civil}</p>
           <p class="card-text">Status: ${funcionario.status}</p>
-          <button class="btn btn-primary" onclick="editarFuncionario(${funcionario.matricula})">Editar</button>
+          <button class="btn btn-primary" onclick="openModal()">Editar</button>
           <button class="btn btn-danger" onclick="deletarFuncionario(${funcionario.matricula})">Deletar</button>
         </div>
       </div>
@@ -465,6 +466,7 @@ document
 
 function openModal(){
     document.getElementById('sectionFuncionarios').style.display = 'none';
+    document.getElementById("sectionPesquisa").style.display = "none";
     document.getElementById('sectionModal').style.display = 'block';
     const modal = document.getElementById('modal-container')
     modal.classList.add('mostrar')

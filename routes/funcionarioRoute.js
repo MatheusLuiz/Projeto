@@ -22,8 +22,8 @@ router.post('/funcionarios', (req, res, next) => {
     next();
 }, funcionarioController.createFuncionario);
 
-router.put('/funcionarios/:matricula', (req, res, next) => {
-    console.log(`Requisição recebida em /funcionarios/${req.params.id} com corpo:`, req.body);
+router.post('/funcionario', (req, res, next) => {
+    console.log(`Requisição recebida em /funcionario com corpo:`, req.body);
     next();
 }, funcionarioController.updateFuncionario);
 

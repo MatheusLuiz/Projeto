@@ -41,7 +41,6 @@ const createFuncionario = async (req, res) => {
     try {
         const { matricula, nome, sobrenome, cpf, rg, data_nascimento, estado_civil, cnh, status, data_cadastro, id_cargo, id_setor, id_filial } = req.body;
         if (!nome || !matricula) {
-            console.log("teste" + nome, matricula);
             return res.status(400).json({ error: 'Todos os campos obrigatórios devem ser preenchidos: nome, matricula' });
         }
         const newFuncionario = await Funcionario.create({
