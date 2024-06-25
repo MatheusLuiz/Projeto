@@ -25,6 +25,18 @@ const getAllFuncionariosActive = async (req, res) => {
     }
 };
 
+const getAllFuncionariosInactive = async (req, res) => {
+    try {
+        console.log("Chamando Funcionario.findAll");
+        const funcionarios = await Funcionario.findAllInactive();
+        console.log("Funcionários encontrados:", funcionarios);
+        res.status(200).json(funcionarios);
+    } catch (error) {
+        console.error('Erro ao buscar todos os funcionários:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+};
+
 const createFuncionario = async (req, res) => {
     try {
         const { matricula, nome, sobrenome, cpf, rg, data_nascimento, estado_civil, cnh, status, data_cadastro, id_cargo, id_setor, id_filial } = req.body;
@@ -93,5 +105,6 @@ module.exports = {
     getFuncionarioById,
     getAllFuncionariosActive,
     updateFuncionario,
-    deleteFuncionario
+    deleteFuncionario,
+    getAllFuncionariosInactive
 };

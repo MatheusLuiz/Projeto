@@ -7,6 +7,11 @@ router.get('/funcionarios', (req, res, next) => {
     next();
 }, funcionarioController.getAllFuncionariosActive);
 
+router.get('/funcionarios/inativos', (req, res, next) => {
+    console.log("Requisição recebida em /funcionarios");
+    next();
+}, funcionarioController.getAllFuncionariosInactive);
+
 router.get('/funcionarios/:matricula', (req, res, next) => {
     console.log(`Requisição recebida em /funcionarios/${req.params.matricula}`);
     next();
@@ -17,7 +22,7 @@ router.post('/funcionarios', (req, res, next) => {
     next();
 }, funcionarioController.createFuncionario);
 
-router.put('/funcionarios/:id', (req, res, next) => {
+router.put('/funcionarios/:matricula', (req, res, next) => {
     console.log(`Requisição recebida em /funcionarios/${req.params.id} com corpo:`, req.body);
     next();
 }, funcionarioController.updateFuncionario);
