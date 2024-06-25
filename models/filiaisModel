@@ -1,0 +1,46 @@
+const db = require('../config/banco');
+
+exports.findAll = () => {
+    return db.query('SELECT * FROM filiais')
+        .then(([rows]) => rows)
+        .catch(err => {
+            console.error('Erro ao buscar filiais:', err);
+            throw err;
+        });
+};
+
+exports.findById = (id) => {
+    return db.query('SELECT * FROM filiais WHERE id_filial = ?', [id])
+        .then(([rows]) => rows[0])
+        .catch(err => {
+            console.error('Erro ao buscar filial por ID:', err);
+            throw err;
+        });
+};
+
+exports.create = (filial) => {
+    return db.query('INSERT INTO filiais SET ?', filial)
+        .then(([result]) => ({ id: result.insertId, ...filial }))
+        .catch(err => {
+            console.error('Erro ao criar filial:', err);
+            throw err;
+        });
+};
+
+exports.update = (filial, id) => {
+    return db.query('UPDATE filiais SET ? WHERE id_filial = ?', [filial, id])
+        .then(([result]) => result.affectedRows > 0)
+        .catch(err => {
+            console.error('Erro ao atualizar filial:', err);
+            throw err;
+        });
+};
+
+exports.delete = (id) => {
+    return db.query('DELETE FROM filiais WHERE id_filial = ?', id)
+        .then(([result]) => result.affectedRows > 0)
+        .catch(err => {
+            console.error('Erro ao remover filial:', err);
+            throw err;
+        });
+};
