@@ -19,9 +19,20 @@ const Funcionario = {
         const [rows] = await db.execute(`SELECT * FROM funcionarios WHERE matricula = ?`, [matricula]);
         return rows[0];
     },
+    
     findAllActive: async () => {
         try {
             const status = 'ativo'
+            const [rows] = await db.execute(`SELECT * FROM funcionarios where status = ?`,[status]);
+            return rows;
+        } catch (error) {
+            console.error('Erro ao buscar todos os funcionários no banco de dados:', error);
+            throw error;
+        }
+    },
+    findAllInactive: async () => {
+        try {
+            const status = 'inativo'
             const [rows] = await db.execute(`SELECT * FROM funcionarios where status = ?`,[status]);
             return rows;
         } catch (error) {

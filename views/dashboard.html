@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +25,7 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
                 <li><a class="dropdown-item" onclick="exibirListaFuncionariosAtivos()">Lista de Funcionários</a></li>
                 <li><a class="dropdown-item" onclick="exibirFormCadastro()">Cadastrar Funcionário</a></li>
-                <li><a class="dropdown-item" onclick="pesquisarFuncionarios()">Pesquisar Funcionário</a></li>
+                <li><a class="dropdown-item" onclick="exibirPesquisaFuncionarios()">Pesquisar Funcionário</a></li>
                 <li><a class="dropdown-item" onclick="exibirListaFuncionariosInativos()">Funcionários Inativos</a></li>
               </ul>
             </li>
@@ -145,63 +145,86 @@
     <form id="formCadastroFuncionario">
       <div class="mb-3">
         <label for="matricula" class="form-label">Matrícula</label>
-        <input type="text" class="form-control" id="matricula" required>
+        <input type="text" class="form-control" id="matricula" name="matricula" required>
       </div>
       <div class="mb-3">
         <label for="nome" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="nome" required>
+        <input type="text" class="form-control" id="nome" name="nome" required>
       </div>
       <div class="mb-3">
         <label for="sobrenome" class="form-label">Sobrenome</label>
-        <input type="text" class="form-control" id="sobrenome">
+        <input type="text" class="form-control" id="sobrenome" name="sobrenome">
       </div>
       <div class="mb-3">
         <label for="cpf" class="form-label">CPF</label>
-        <input type="text" class="form-control" id="cpf">
+        <input type="text" class="form-control" id="cpf" name="cpf">
       </div>
       <div class="mb-3">
         <label for="rg" class="form-label">RG</label>
-        <input type="text" class="form-control" id="rg">
+        <input type="text" class="form-control" id="rg" name="rg">
       </div>
       <div class="mb-3">
         <label for="data_nascimento" class="form-label">Data de Nascimento</label>
-        <input type="date" class="form-control" id="data_nascimento">
+        <input type="date" class="form-control" id="data_nascimento" name="data_nascimento">
       </div>
       <div class="mb-3">
         <label for="estado_civil" class="form-label">Estado Civil</label>
-        <input type="text" class="form-control" id="estado_civil">
+        <input type="text" class="form-control" id="estado_civil" name="estado_civil">
       </div>
       <div class="mb-3">
         <label for="cnh" class="form-label">CNH</label>
-        <input type="text" class="form-control" id="cnh">
+        <input type="text" class="form-control" id="cnh" name="cnh">
       </div>
       <div class="mb-3">
         <label for="status" class="form-label">Status</label>
-        <input type="text" class="form-control" id="status">
+        <input type="text" class="form-control" id="status" name="status">
       </div>
       <div class="mb-3">
         <label for="data_cadastro" class="form-label">Data de Cadastro</label>
-        <input type="date" class="form-control" id="data_cadastro">
+        <input type="date" class="form-control" id="data_cadastro" name="data_cadastro">
       </div>
       <div class="mb-3">
         <label for="id_cargo" class="form-label">ID do Cargo</label>
-        <input type="text" class="form-control" id="id_cargo">
+        <input type="text" class="form-control" id="id_cargo" name="id_cargo">
       </div>
       <div class="mb-3">
         <label for="id_setor" class="form-label">ID do Setor</label>
-        <input type="text" class="form-control" id="id_setor">
+        <input type="text" class="form-control" id="id_setor" name="id_setor">
       </div>
       <div class="mb-3">
         <label for="id_filial" class="form-label">ID da Filial</label>
-        <input type="text" class="form-control" id="id_filial">
+        <input type="text" class="form-control" id="id_filial" name="id_filial">
       </div> 
       <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
   </section>
+
+  <section id="sectionPesquisa" class="container mt-4" style="display: none;">
+    <h2>Pesquisar Funcionário</h2>
+    <form id="formPesquisaFuncionario">
+      <div class="mb-3">
+        <label for="matricula" class="form-label">Matricula Funcionário</label>
+        <input type="text" class="form-control" id="matriculaPesquisa" name="matricula" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Pesquisar</button>
+    </form>
+    <ul id="resultadosPesquisa" class="list-group mt-4">
+      <!-- Resultados da pesquisa serão inseridos aqui -->
+    </ul>
+  </section>
+
+  <section id="sectionFuncionariosInativos" class="container mt-4" style="display: none;">
+    <h2>Lista de Funcionários Inativos</h2>
+    <ul id="listaFuncionariosInativos" class="list-group">
+      <!-- Lista de funcionários será inserida aqui -->
+    </ul>
+  </section>
+
   <div id="mensagemCadastro"></div>
 
+  
+
   <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="/js/funcionario.js"></script>
 </body>
 </html>
